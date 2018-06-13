@@ -20,6 +20,7 @@
 #include <IVTHeatpumpIR.h>
 #include <HitachiHeatpumpIR.h>
 #include <BalluHeatpumpIR.h>
+#include <PanasonicCSHeatpumpIR.h>
 
 
 #ifndef ESP8266
@@ -44,11 +45,12 @@ HeatpumpIR *heatpumpIR[] = {new PanasonicCKPHeatpumpIR(), new PanasonicDKEHeatpu
                             new FuegoHeatpumpIR(), new ToshibaHeatpumpIR(), new ToshibaDaiseikaiHeatpumpIR(),
                             new IVTHeatpumpIR(), new HitachiHeatpumpIR(),
                             new BalluHeatpumpIR(),
+                            new PanasonicCSHeatpumpIR(),
                             NULL};
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(500);
 
   Serial.println(F("Starting"));
