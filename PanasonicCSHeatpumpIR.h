@@ -1,6 +1,10 @@
-/*
-    Panasonic CS heatpump control (remote control P/N A75C3010)
-*/
+/**
+ * Panasonic CS heatpump control (remote control P/N A75C3010)
+ * Checked with Panasonic Inverter Air Conditioner CS-RE18GKE indoor and CU-RE18GKE outdoor split unit
+ * Model known as WA-18HP/I/ST (year 2007-2008)
+ * 
+ * Tested with https://github.com/ToniA/Raw-IR-decoder-for-Arduino
+ */
 #ifndef PanasonicCSHeatpumpIR_h
 #define PanasonicCSHeatpumpIR_h
 
@@ -20,7 +24,6 @@
 #define PANASONIC_AIRCON2_MODE_HEAT  0x40
 #define PANASONIC_AIRCON2_MODE_COOL  0x30
 #define PANASONIC_AIRCON2_MODE_DRY   0x20
-//#define PANASONIC_AIRCON2_MODE_FAN   0x60
 #define PANASONIC_AIRCON2_MODE_OFF   0x00 // Power OFF
 #define PANASONIC_AIRCON2_MODE_ON    0x01
 #define PANASONIC_AIRCON2_TIMER_CNL  0x00 // cancel both timers?
@@ -44,18 +47,10 @@
 #define PANASONIC_AIRCON2_HS_MLEFT   0x0A
 #define PANASONIC_AIRCON2_HS_MRIGHT  0x0B
 #define PANASONIC_AIRCON2_HS_RIGHT   0x0C
-//#define PANASONIC_AIRCON2_QUIET      0x01 // Quiet setting
-//#define PANASONIC_AIRCON2_POWERFUL   0x20 // Powerful setting
-
-// Panasonic model codes
-#define PANASONIC_CS 0
 
 
 class PanasonicCSHeatpumpIR : public HeatpumpIR
 {
-  protected: // Cannot create generic Panasonic CS heatpump instances
-    uint8_t _panasonicModel;  // Tells whether this is CS
-
   public:
     PanasonicCSHeatpumpIR();
     void send(IRSender& IR, uint8_t powerModeCmd, uint8_t operatingModeCmd, uint8_t fanSpeedCmd, uint8_t temperatureCmd, uint8_t swingVCmd, uint8_t swingHCmd);
@@ -64,6 +59,5 @@ class PanasonicCSHeatpumpIR : public HeatpumpIR
   private:
     void sendPanasonic(IRSender& IR, uint8_t operatingMode, uint8_t fanSpeed, uint8_t temperature, uint8_t swingV, uint8_t swingH);
 };
-
 
 #endif

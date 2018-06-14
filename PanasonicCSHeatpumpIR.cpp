@@ -1,6 +1,6 @@
 #include <PanasonicCSHeatpumpIR.h>
 
-// This is a protected method, i.e. generic Panasonic instances cannot be created
+
 PanasonicCSHeatpumpIR::PanasonicCSHeatpumpIR() : HeatpumpIR()
 {
   static const char PROGMEM model[] PROGMEM = "panasonic_cs";
@@ -8,26 +8,17 @@ PanasonicCSHeatpumpIR::PanasonicCSHeatpumpIR() : HeatpumpIR()
 
   _model = model;
   _info = info;
-
-  //_panasonicModel = PANASONIC_CS;
 }
 
 
-// The different models just set the model accordingly
-//PanasonicCSHeatpumpIR::PanasonicCSHeatpumpIR() : PanasonicCSHeatpumpIR()
-//{
-
-//}
-
-
-// Panasonic DKE/NKE/JKE numeric values to command bytes
+// Panasonic CS without the timers
 void PanasonicCSHeatpumpIR::send(IRSender& IR, uint8_t powerModeCmd, uint8_t operatingModeCmd, uint8_t fanSpeedCmd, uint8_t temperatureCmd, uint8_t swingVCmd, uint8_t swingHCmd)
 {
   send(IR, powerModeCmd, operatingModeCmd, fanSpeedCmd, temperatureCmd, swingVCmd, swingHCmd, false, false);
 }
 
-// Panasonic DKE/NKE/JKE numeric values to command bytes
-void PanasonicCSHeatpumpIR::send(IRSender& IR, uint8_t powerModeCmd, uint8_t operatingModeCmd, uint8_t fanSpeedCmd, uint8_t temperatureCmd, uint8_t swingVCmd, uint8_t swingHCmd, bool powerfulCmd, bool quietCmd)
+// Panasonic CS with the timers
+void PanasonicCSHeatpumpIR::send(IRSender& IR, uint8_t powerModeCmd, uint8_t operatingModeCmd, uint8_t fanSpeedCmd, uint8_t temperatureCmd, uint8_t swingVCmd, uint8_t swingHCmd, bool TimerA, bool TimerB)
 {
   // Sensible defaults for the heat pump mode
 
@@ -151,14 +142,6 @@ void PanasonicCSHeatpumpIR::sendPanasonic(IRSender& IR, uint8_t operatingMode, u
   // Save some SRAM by having the template in flash
   uint8_t panasonicTemplate[27];
   memcpy_P(panasonicTemplate, panasonicProgmemTemplate, sizeof(panasonicTemplate));
-
-  //switch(_panasonicModel)
-  //{
-  //  case PANASONIC_CS:
-  //      // no model based changes
-  //      break;
-  //}
-  // this gave out of scope build errors?
 
   panasonicTemplate[13] |= operatingMode;
   panasonicTemplate[14] = temperature << 1;
