@@ -50,8 +50,7 @@ HeatpumpIR *heatpumpIR[] = {//new PanasonicCKPHeatpumpIR(), new PanasonicDKEHeat
 
 void setup()
 {
-  //Serial.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(115200); // increased, otherwise Wemos D1 mini Pro won't upload.
   delay(500);
 
   Serial.println(F("Starting"));
