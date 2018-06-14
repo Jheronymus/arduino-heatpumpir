@@ -1,26 +1,26 @@
 #include <Arduino.h>
 
-#include <FujitsuHeatpumpIR.h>
+//#include <FujitsuHeatpumpIR.h>
 #include <PanasonicCKPHeatpumpIR.h>
 #include <PanasonicHeatpumpIR.h>
-#include <CarrierHeatpumpIR.h>
-#include <MideaHeatpumpIR.h>
-#include <MitsubishiHeatpumpIR.h>
-#include <SamsungHeatpumpIR.h>
-#include <SharpHeatpumpIR.h>
-#include <DaikinHeatpumpIR.h>
-#include <MitsubishiHeavyHeatpumpIR.h>
-#include <MitsubishiSEZKDXXHeatpumpIR.h>
-#include <HyundaiHeatpumpIR.h>
-#include <HisenseHeatpumpIR.h>
-#include <GreeHeatpumpIR.h>
-#include <FuegoHeatpumpIR.h>
-#include <ToshibaHeatpumpIR.h>
-#include <ToshibaDaiseikaiHeatpumpIR.h>
-#include <IVTHeatpumpIR.h>
-#include <HitachiHeatpumpIR.h>
-#include <BalluHeatpumpIR.h>
 #include <PanasonicCSHeatpumpIR.h>
+//#include <CarrierHeatpumpIR.h>
+//#include <MideaHeatpumpIR.h>
+//#include <MitsubishiHeatpumpIR.h>
+//#include <SamsungHeatpumpIR.h>
+//#include <SharpHeatpumpIR.h>
+//#include <DaikinHeatpumpIR.h>
+//#include <MitsubishiHeavyHeatpumpIR.h>
+//#include <MitsubishiSEZKDXXHeatpumpIR.h>
+//#include <HyundaiHeatpumpIR.h>
+//#include <HisenseHeatpumpIR.h>
+//#include <GreeHeatpumpIR.h>
+//#include <FuegoHeatpumpIR.h>
+//#include <ToshibaHeatpumpIR.h>
+//#include <ToshibaDaiseikaiHeatpumpIR.h>
+//#include <IVTHeatpumpIR.h>
+//#include <HitachiHeatpumpIR.h>
+//#include <BalluHeatpumpIR.h>
 
 
 #ifndef ESP8266
@@ -32,24 +32,25 @@ IRSenderBitBang irSender(D2);  // IR led on Wemos D1 mini, connect between D2 an
 
 
 // Array with all supported heatpumps
-HeatpumpIR *heatpumpIR[] = {new PanasonicCKPHeatpumpIR(), new PanasonicDKEHeatpumpIR(), new PanasonicJKEHeatpumpIR(),
-                            new PanasonicNKEHeatpumpIR(), new PanasonicLKEHeatpumpIR(),
-                            new CarrierNQVHeatpumpIR(), new CarrierMCAHeatpumpIR(),
-                            new MideaHeatpumpIR(), new FujitsuHeatpumpIR(),
-                            new MitsubishiFDHeatpumpIR(), new MitsubishiFEHeatpumpIR(), new MitsubishiMSYHeatpumpIR(), new MitsubishiFAHeatpumpIR(),
-                            new SamsungAQVHeatpumpIR(), new SamsungFJMHeatpumpIR(),new SharpHeatpumpIR(), new DaikinHeatpumpIR(),
-                            new MitsubishiHeavyZJHeatpumpIR(), new MitsubishiHeavyZMHeatpumpIR(),
-                            new MitsubishiSEZKDXXHeatpumpIR(),
-                            new HyundaiHeatpumpIR(), new HisenseHeatpumpIR(),
-                            new GreeGenericHeatpumpIR(), new GreeYANHeatpumpIR(),
-                            new FuegoHeatpumpIR(), new ToshibaHeatpumpIR(), new ToshibaDaiseikaiHeatpumpIR(),
-                            new IVTHeatpumpIR(), new HitachiHeatpumpIR(),
-                            new BalluHeatpumpIR(),
+HeatpumpIR *heatpumpIR[] = {//new PanasonicCKPHeatpumpIR(), new PanasonicDKEHeatpumpIR(), new PanasonicJKEHeatpumpIR(),
+                            //new PanasonicNKEHeatpumpIR(), new PanasonicLKEHeatpumpIR(),
+                            //new CarrierNQVHeatpumpIR(), new CarrierMCAHeatpumpIR(),
+                            //new MideaHeatpumpIR(), new FujitsuHeatpumpIR(),
+                            //new MitsubishiFDHeatpumpIR(), new MitsubishiFEHeatpumpIR(), new MitsubishiMSYHeatpumpIR(), new MitsubishiFAHeatpumpIR(),
+                            //new SamsungAQVHeatpumpIR(), new SamsungFJMHeatpumpIR(),new SharpHeatpumpIR(), new DaikinHeatpumpIR(),
+                            //new MitsubishiHeavyZJHeatpumpIR(), new MitsubishiHeavyZMHeatpumpIR(),
+                            //new MitsubishiSEZKDXXHeatpumpIR(),
+                            //new HyundaiHeatpumpIR(), new HisenseHeatpumpIR(),
+                            //new GreeGenericHeatpumpIR(), new GreeYANHeatpumpIR(),
+                            //new FuegoHeatpumpIR(), new ToshibaHeatpumpIR(), new ToshibaDaiseikaiHeatpumpIR(),
+                            //new IVTHeatpumpIR(), new HitachiHeatpumpIR(),
+                            //new BalluHeatpumpIR(),
                             new PanasonicCSHeatpumpIR(),
                             NULL};
 
 void setup()
 {
+  //Serial.begin(9600);
   Serial.begin(115200);
   delay(500);
 

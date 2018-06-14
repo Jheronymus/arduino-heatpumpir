@@ -163,6 +163,7 @@ void PanasonicCSHeatpumpIR::sendPanasonic(IRSender& IR, uint8_t operatingMode, u
   panasonicTemplate[13] |= operatingMode;
   panasonicTemplate[14] = temperature << 1;
   panasonicTemplate[16] = fanSpeed | swingV;
+  panasonicTemplate[17] = swingH;
 
   // Checksum calculation
   uint8_t checksum = 0x06;
